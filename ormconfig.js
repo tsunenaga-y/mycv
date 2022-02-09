@@ -14,6 +14,14 @@ switch (process.env.NODE_ENV) {
       entities: ['**/*.entity.js']
     });
     break;
+  case 'devpg':
+    Object.assign(dbConfig, {
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      entities: ['**/*.entity.js'],
+      migrationsRun: true
+    });
+    break;
   case 'test':
     Object.assign(dbConfig, {
       type: 'sqlite',
