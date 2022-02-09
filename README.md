@@ -4,7 +4,7 @@
 $ npm install
 ```
 
-## Running the app
+## Running the app with sqlite
 
 ```bash
 # create tables
@@ -15,9 +15,16 @@ $ npm run start
 
 # watch mode
 $ npm run start:dev
+```
 
-# production mode
-$ npm run start:prod
+## Running the app with postgresql
+
+```bash
+# start up postgresql using docker-compose
+$ docker-compose up -d
+
+# development (watch mode)
+$ npm run start:devpg
 ```
 
 ## How to call api
