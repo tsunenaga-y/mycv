@@ -10,6 +10,7 @@ import {
   NotFoundException,
   Session,
   UseGuards,
+  ParseArrayPipe,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -57,6 +58,27 @@ export class UsersController {
     const user = await this.authService.signin(body.email, body.password);
     session.userId = user.id;
     return user;
+  }
+
+  @Get('/createdummy')
+  createDummyUser(@Query('num') num: number) {
+    const userList: Array<UserDto> = [];
+
+    for (let i = 0; i < num; i++) {
+      let user = new UserDto();
+      user.id = i;
+      user.email = 'user' + i + '@example.com';
+      userList.push(user);
+    }
+    return userList;
+  }
+
+  @Post('/countdummy')
+  countDummyUser(
+    @Body(new ParseArrayPipe({ items: UserDto })) body: UserDto[],
+  ) {
+    let i = body.length;
+    return i;
   }
 
   @Get('/:id')

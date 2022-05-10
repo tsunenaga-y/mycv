@@ -39,3 +39,24 @@ content-type: application/json
   "email": "ccccc@ccccc.com",
   "password": "ccccc"
 }
+
+### Create Dummy User Sample
+GET http://localhost:3000/auth/createdummy?num=10000
+
+### Count Dummy User Sample
+POST http://localhost:3000/auth/countdummy
+content-type: application/json
+
+[
+    {
+      "id": 0,
+      "email": "user0@example.com"
+    },
+    {
+      "id": 1,
+      "email": "user1@example.com"
+    }
+]
+
+### Sample
+GET http://localhost:3000/auth/sample
